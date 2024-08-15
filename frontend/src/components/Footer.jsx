@@ -1,42 +1,75 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import {
   FaSquareXTwitter,
-  FaSquareInstagram,
-  FaYoutube,
   FaLinkedin,
 } from "react-icons/fa6";
 
 const Footer = () => {
   const { isAuthenticated } = useSelector((state) => state.user);
+
+  const linkStyle = {
+    color: 'white',
+    transition: 'color 0.3s ease',
+  };
+
+  const linkHoverStyle = {
+    color: 'orange',
+  };
+
   return (
     <>
       <footer>
         <div>
-          <img src="/logo.png" alt="logo" />
+          <p>
+            <span style={{ fontSize: '3.5em' }}>
+              <span style={{ color: 'orange' }}>Apna</span>
+              <span style={{ color: 'green' }}>Journey</span>
+            </span>
+          </p>
         </div>
+
         <div>
           <h4>Support</h4>
           <ul>
-            <li>Street No.007 Shahrah-e-Faisal Karachi, Pakistan</li>
-            <li>nichenest@gmail.com</li>
-            <li>+92 3106507521</li>
+            <li>ApnaJourney02@gmail.com</li>
+            <li>+91 7371083339</li>
           </ul>
         </div>
 
         <div>
           <h4>Quick Links</h4>
           <ul>
-            <li to={"/"}>
-              <Link>Home</Link>
+            <li>
+              <Link 
+                to={"/"}
+                style={linkStyle}
+                onMouseEnter={(e) => Object.assign(e.target.style, linkHoverStyle)}
+                onMouseLeave={(e) => Object.assign(e.target.style, linkStyle)}
+              >
+                Home
+              </Link>
             </li>
-            <li to={"/jobs"}>
-              <Link>Jobs</Link>
+            <li>
+              <Link 
+                to={"/jobs"}
+                style={linkStyle}
+                onMouseEnter={(e) => Object.assign(e.target.style, linkHoverStyle)}
+                onMouseLeave={(e) => Object.assign(e.target.style, linkStyle)}
+              >
+                Profile
+              </Link>
             </li>
             {isAuthenticated && (
               <li>
-                <Link to={"/dashboard"}>Dashboard</Link>
+                <Link 
+                  to={"/dashboard"}
+                  style={linkStyle}
+                  onMouseEnter={(e) => Object.assign(e.target.style, linkHoverStyle)}
+                  onMouseLeave={(e) => Object.assign(e.target.style, linkStyle)}
+                >
+                  Dashboard
+                </Link>
               </li>
             )}
           </ul>
@@ -45,7 +78,12 @@ const Footer = () => {
           <h4>Follow Us</h4>
           <ul>
             <li>
-              <Link to={"/"}>
+              <Link 
+                to={"/"}
+                style={linkStyle}
+                onMouseEnter={(e) => Object.assign(e.target.style, linkHoverStyle)}
+                onMouseLeave={(e) => Object.assign(e.target.style, linkStyle)}
+              >
                 <span>
                   <FaSquareXTwitter />
                 </span>
@@ -53,25 +91,14 @@ const Footer = () => {
               </Link>
             </li>
             <li>
-              <Link to={"/"}>
+              <Link 
+                to={"https://www.linkedin.com/in/anandsingh76/"}
+                style={linkStyle}
+                onMouseEnter={(e) => Object.assign(e.target.style, linkHoverStyle)}
+                onMouseLeave={(e) => Object.assign(e.target.style, linkStyle)}
+              >
                 <span>
-                  <FaSquareInstagram />
-                </span>
-                <span>Instagram</span>
-              </Link>
-            </li>
-            <li>
-              <Link to={"/"}>
-                <span>
-                  <FaYoutube />
-                </span>
-                <span>Youtube</span>
-              </Link>
-            </li>
-            <li>
-              <Link to={"/"}>
-                <span>
-                  <FaLinkedin />
+                  <FaLinkedin/>
                 </span>
                 <span>LinkedIn</span>
               </Link>
@@ -80,7 +107,7 @@ const Footer = () => {
         </div>
       </footer>
       <div className="copyright">
-        &copy; CopyRight 2024. All Rights Reserved By CodeWithZeeshu
+        © CopyRight 2024. All Rights Reserved By ApnaJourney
       </div>
     </>
   );

@@ -1,46 +1,56 @@
-import React from "react";
-import { LuUserPlus } from "react-icons/lu";
+// React import removed as it's not used in this componentimport { LuUserPlus } from "react-icons/lu";
 import { VscTasklist } from "react-icons/vsc";
 import { BiSolidLike } from "react-icons/bi";
 
+import { LuUserPlus } from "react-icons/lu";
+// import { VscTasklist } from "react-icons/vsc";import { BiSolidLike } from "react-icons/bi";
+
 const HowItWorks = () => {
+  const cardStyle = {
+    backgroundColor: 'white',
+    transition: 'all 0.3s ease',
+  };
+
+  const cardHoverStyle = {
+    backgroundColor: '#90EE90',
+  };
+
+  const descriptionStyle = {
+    color: 'darkorange',
+    transition: 'color 0.3s ease',
+  };
+
   return (
     <section className="howItWorks">
-      <h3>How does it work?</h3>
+      <h3 style={{ color: 'darkgreen' }}>How does it work?</h3>
       <div className="container">
-        <div className="card">
-          <div className="icon">
-            <LuUserPlus />
+        {[
+          { icon: <LuUserPlus />, title: "Create an Account", description: "Sign up for a free account on Apna Journey as a business or startup. Set up your company profile in just a few minutes to start showcasing your details. Customize your profile to highlight your strengths and unique offerings." },
+          { icon: <VscTasklist />, title: "Preview", description: "Preview your profile and customize it to perfectly reflect your business's unique identity. Feel free to make adjustments and update details as needed, ensuring your profile always showcases the most accurate and engaging information about your company." },
+          { icon: <BiSolidLike />, title: "Networking", description: "Unlock new opportunities and grow your business through our robust networking capabilities. Our platform facilitates seamless interactions, helping you build a strong professional network and drive your business forward." },
+        ].map((item, index) => (
+          <div 
+            key={index}
+            className="card" 
+            style={cardStyle}
+            onMouseEnter={(e) => {
+              Object.assign(e.currentTarget.style, cardHoverStyle);
+              e.currentTarget.querySelector('p').style.color = 'black';
+            }}
+            onMouseLeave={(e) => {
+              Object.assign(e.currentTarget.style, cardStyle);
+              e.currentTarget.querySelector('p').style.color = 'darkorange';
+            }}
+          >
+            <div className="icon" style={{ color: 'orange' }}>
+              {item.icon}
+            </div>
+            <h4 style={{ color: 'darkgreen' }}>{item.title}</h4>
+            <p style={descriptionStyle}>
+              {item.description}
+            </p>
           </div>
-          <h4>Create an Account</h4>
-          <p>
-            Sign up for a free account as a job seeker or employer. Set up your
-            profile in minutes to start posting jobs or applying for jobs.
-            Customize your profile to highlight your skills or requirements.
-          </p>
-        </div>
-        <div className="card">
-          <div className="icon">
-            <VscTasklist />
-          </div>
-          <h4>Post or Browse Jobs</h4>
-          <p>
-            Employers can post detailed job descriptions, and job seekers can
-            browse a comprehensive list of available positions. Utilize filters
-            to find jobs that match your skills and preferences.
-          </p>
-        </div>
-        <div className="card">
-          <div className="icon">
-            <BiSolidLike />
-          </div>
-          <h4>Hire or Get Hired</h4>
-          <p>
-            Employers can shortlist candidates and extend job offers. Job
-            seekers can review job offers and accept positions that align with
-            their career goals.
-          </p>
-        </div>
+        ))}
       </div>
     </section>
   );

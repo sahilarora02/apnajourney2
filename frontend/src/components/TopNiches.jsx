@@ -1,52 +1,39 @@
-import React from "react";
-
+// React import removed as it's not used in this component
 const TopNiches = () => {
   const services = [
     {
       id: 1,
-      service: "Software Development",
+      service: "Networking",
       description:
-        "Innovative software development services to build, maintain, and upgrade applications, ensuring they meet the highest quality standards.",
+        "Targets established companies looking to enhance their market presence, streamline profile management, and engage with industry peers and potential clients.",
     },
     {
       id: 2,
-      service: "Web Development",
+      service: "Startup Ecosystems",
       description:
-        "Comprehensive web development solutions from front-end design to back-end integration, delivering responsive and user-friendly websites.",
+        "Focuses on emerging startups, providing a platform for new businesses to establish and promote their profiles, connect with investors, and network with other entrepreneurs.",
     },
     {
       id: 3,
-      service: "Data Science",
+      service: "Professional Services",
       description:
-        "Advanced data science services to analyze and interpret complex data, providing actionable insights and data-driven solutions.",
-    },
-    {
-      id: 4,
-      service: "Cloud Computing",
-      description:
-        "Reliable cloud computing services to manage, store, and process data efficiently, offering scalable and flexible cloud solutions.",
-    },
-    {
-      id: 5,
-      service: "DevOps",
-      description:
-        "DevOps services to streamline software development and operations, enhancing deployment efficiency and reducing time to market.",
-    },
-    {
-      id: 6,
-      service: "Mobile App Development",
-      description:
-        "Expert mobile app development for iOS and Android platforms, creating intuitive and engaging mobile experiences for your users.",
+        "Assists firms in sectors like legal, accounting, and consulting by allowing them to manage detailed profiles, showcase services, and connect with potential clients.",
     },
   ];
 
   return (
     <section className="services">
-      <h3>Top Niches</h3>
+      <h3 style={{ color: 'darkgreen' }}>Prime Focus</h3>
       <div className="grid">
         {services.map((element) => {
           return (
-            <div className="card" key={element.id}>
+            <div 
+              className="card" 
+              key={element.id}
+              style={{ transition: 'background-color 0.3s ease' }}
+              onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#fab260'}
+              onMouseLeave={(e) => e.currentTarget.style.backgroundColor = ''}
+            >
               <h4>{element.service}</h4>
               <p>{element.description}</p>
             </div>
